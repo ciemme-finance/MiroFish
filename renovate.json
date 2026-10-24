@@ -1,7 +1,180 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "github>ciemme-finance/renovate-config"
+    "config:best-practices",
+    ":semanticCommits"
   ],
+  "timezone": "Europe/Rome",
+  "schedule": [
+    "* 3-6 * * *"
+  ],
+  "updateNotScheduled": false,
+  "prHourlyLimit": 2,
+  "prConcurrentLimit": 5,
+  "commitHourlyLimit": 2,
+  "platformAutomerge": false,
+  "reviewers": [
+    "paolurso"
+  ],
+  "osvVulnerabilityAlerts": true,
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": [
+      "dependencies",
+      "security",
+      "priority-high",
+      "manual-review"
+    ],
+    "schedule": [
+      "* * * * *"
+    ],
+    "minimumReleaseAge": null,
+    "vulnerabilityFixStrategy": "lowest",
+    "automerge": false,
+    "dependencyDashboardApproval": false,
+    "prConcurrentLimit": 0
+  },
+  "packageRules": [
+    {
+      "description": "Keep production runtime dependencies clearly labeled for manual review",
+      "matchDepTypes": [
+        "dependencies"
+      ],
+      "matchPackageNames": [
+        "next",
+        "react",
+        "react-dom",
+        "@supabase/**",
+        "@clerk/**",
+        "@anthropic-ai/sdk",
+        "@hono/node-server",
+        "stripe",
+        "drizzle-orm",
+        "drizzle-kit"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "automerge": false,
+      "labels": [
+        "dependencies",
+        "manual-review",
+        "production-runtime"
+      ]
+    },
+    {
+      "description": "Group Next.js and React core",
+      "matchPackageNames": [
+        "next",
+        "react",
+        "react-dom",
+        "@types/react",
+        "@types/react-dom"
+      ],
+      "groupName": "Next.js & React core"
+    },
+    {
+      "description": "Group Radix UI packages",
+      "matchPackageNames": [
+        "@radix-ui/**"
+      ],
+      "groupName": "Radix UI"
+    },
+    {
+      "description": "Group TanStack packages",
+      "matchPackageNames": [
+        "@tanstack/**"
+      ],
+      "groupName": "TanStack"
+    },
+    {
+      "description": "Group Supabase packages",
+      "matchPackageNames": [
+        "@supabase/**"
+      ],
+      "groupName": "Supabase"
+    },
+    {
+      "description": "Group Sentry packages",
+      "matchPackageNames": [
+        "@sentry/**"
+      ],
+      "groupName": "Sentry"
+    },
+    {
+      "description": "Group ESLint packages",
+      "matchPackageNames": [
+        "eslint",
+        "eslint**",
+        "@eslint/**",
+        "@typescript-eslint/**"
+      ],
+      "groupName": "ESLint"
+    },
+    {
+      "description": "Group Clerk packages",
+      "matchPackageNames": [
+        "@clerk/**"
+      ],
+      "groupName": "Clerk"
+    },
+    {
+      "description": "Group AWS SDK packages",
+      "matchPackageNames": [
+        "@aws-sdk/**"
+      ],
+      "groupName": "AWS SDK"
+    },
+    {
+      "description": "Group Tailwind CSS packages",
+      "matchPackageNames": [
+        "tailwindcss",
+        "@tailwindcss/**"
+      ],
+      "groupName": "Tailwind CSS"
+    },
+    {
+      "description": "Group Drizzle packages",
+      "matchPackageNames": [
+        "drizzle-orm",
+        "drizzle-kit"
+      ],
+      "groupName": "Drizzle"
+    },
+    {
+      "description": "Major updates require manual approval and never automerge",
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "dependencyDashboardApproval": true,
+      "automerge": false,
+      "labels": [
+        "dependencies",
+        "major"
+      ]
+    },
+    {
+      "description": "Require manual review for every update while CI is suspended",
+      "matchPackageNames": [
+        "*"
+      ],
+      "automerge": false
+    }
+  ],
+  "automerge": false,
+  "dependencyDashboard": true,
+  "labels": [
+    "dependencies",
+    "manual-review"
+  ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": [
+      "* 3-6 * * 1"
+    ],
+    "automerge": false
+  },
+  "description": "Public-repository policy snapshot: keep aligned with ciemme-finance/renovate-config default.json (2026-10-24).",
   "forkProcessing": "enabled"
 }
