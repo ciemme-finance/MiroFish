@@ -163,7 +163,9 @@
     }
   ],
   "automerge": false,
-  "dependencyDashboard": true,
+  "dependencyDashboard": {
+    "enabled": true
+  },
   "labels": [
     "dependencies",
     "manual-review"
