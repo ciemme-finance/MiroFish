@@ -1,6 +1,6 @@
 services:
   mirofish:
-    image: ghcr.io/666ghj/mirofish:latest
+    image: ghcr.io/666ghj/mirofish:latest@sha256:d236402eb35c5abfd68da63be9d19202d619da8803e173e8e34b97731180944a
     # 加速镜像（如拉取缓慢可替换上方地址）
     # image: ghcr.nju.edu.cn/666ghj/mirofish:latest
     container_name: mirofish
